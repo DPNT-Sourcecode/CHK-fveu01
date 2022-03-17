@@ -5,6 +5,7 @@ def checkout(skus):
     b_count = 0
     c_count = 0
     d_count = 0
+    e_count = 0
     total_price = 0
     if skus == "":
         return 0
@@ -15,6 +16,8 @@ def checkout(skus):
             a_count +=1
             if a_count % 3 == 0:
                 total_price += 30
+            elif a_count % 5 == 0:
+                total_price += 20
             else:
                 total_price += 50
         elif c == 'B':
@@ -29,14 +32,30 @@ def checkout(skus):
         elif c == 'D':
             d_count +=1
             total_price += 15
+        elif c == 'E':
+            e_count += 1
+            if e_count % 2 == 0:
+                import pdb; pdb.set_trace()
+                if b_count % 2 == 0:
+                    total_price += 25  # 15 off for B special offer (don't apply B special offer)
+                elif b_count > 0:
+                    total_price += 10
+                else:
+                    total_price += 40
+            else:
+                total_price += 40
         else:
             return -1
 
     return total_price
 
-# assert(checkout("ABCDCBAABCABBAAA") == 505)
-# assert(checkout("") == -1)
-# assert(checkout("-") == -1)
-# assert(checkout("-1") == -1)
-# assert(checkout("AABAB") == 175)
+assert(checkout("") == 0)
+assert(checkout("-") == -1)
+assert(checkout("-1") == -1)
+assert(checkout("AABAB") == 175)
+assert(checkout("AABABAA") == 245)
+assert(checkout("AABABAAE") == 285)
 
+
+print(checkout("AABABAAEE"))
+assert(checkout("AABABAAEE") == 295)
