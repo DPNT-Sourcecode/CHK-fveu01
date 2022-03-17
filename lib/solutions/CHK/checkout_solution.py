@@ -43,8 +43,10 @@ def checkout(skus):
             if e_count % 2 == 0:
                 if b_count > 0 and b_count % 2 == 0:
                     total_price += 25  # 15 off for B special offer (don't apply B special offer)
+                    b_count -= 1
                 elif b_count > 0:
                     total_price += 10
+                    b_count -= 1
                 else:
                     e_multipriced_offer_to_stack += 1
                     total_price += 40
@@ -70,22 +72,24 @@ def checkout(skus):
 
     return total_price
 
-# assert(checkout("") == 0)
-# assert(checkout("-") == -1)
-# assert(checkout("-1") == -1)
-# assert(checkout("AABAB") == 175)
-# assert(checkout("AABABAA") == 245)
-# assert(checkout("AABABAAE") == 285)
-# assert(checkout("AABABAAEE") == 310)
-# assert(checkout("AABAAAEE") == 280)
-# assert(checkout("AABAAAEED") == 295)
+assert(checkout("") == 0)
+assert(checkout("-") == -1)
+assert(checkout("-1") == -1)
+assert(checkout("AABAB") == 175)
+assert(checkout("AABABAA") == 245)
+assert(checkout("AABABAAE") == 285)
+assert(checkout("AABABAAEE") == 310)
+assert(checkout("AABAAAEE") == 280)
+assert(checkout("AABAAAEED") == 295)
 
-# assert(checkout("AAAAAA") == 250)
-# assert(checkout("AAAAAAA") == 300)
-# assert(checkout("AAAAAAAAA") == 380)
+assert(checkout("AAAAAA") == 250)
+assert(checkout("AAAAAAA") == 300)
+assert(checkout("AAAAAAAAA") == 380)
 
-# assert(checkout("EE") == 80)
-# assert(checkout("EEB") == 80)
+assert(checkout("EE") == 80)
+assert(checkout("EEB") == 80)
 
-# # print(f'checkout(EEEB) is {checkout("EEEB")} and should be 120')
-# assert(checkout("EEEB") == 120)
+assert(checkout("EEEB") == 120)
+# print(f'checkout(BEBEEE) is {checkout("BEBEEE")} and should be 160')
+assert(checkout("BEBEEE") == 160)
+
