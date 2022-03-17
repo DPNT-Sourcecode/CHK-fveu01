@@ -35,7 +35,6 @@ def checkout(skus):
         elif c == 'E':
             e_count += 1
             if e_count % 2 == 0:
-                import pdb; pdb.set_trace()
                 if b_count % 2 == 0:
                     total_price += 25  # 15 off for B special offer (don't apply B special offer)
                 elif b_count > 0:
@@ -55,7 +54,7 @@ assert(checkout("-1") == -1)
 assert(checkout("AABAB") == 175)
 assert(checkout("AABABAA") == 245)
 assert(checkout("AABABAAE") == 285)
+assert(checkout("AABABAAEE") == 310)
+assert(checkout("AABAAAEE") == 280)
+assert(checkout("AABAAAEED") == 295)
 
-
-print(checkout("AABABAAEE"))
-assert(checkout("AABABAAEE") == 295)
