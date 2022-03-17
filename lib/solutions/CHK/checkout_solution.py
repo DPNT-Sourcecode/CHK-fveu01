@@ -36,7 +36,7 @@ def checkout(skus):
         elif c == 'E':
             e_count += 1
             if e_count % 2 == 0:
-                if b_count % 2 == 0:
+                if b_count > 0 and b_count % 2 == 0:
                     total_price += 25  # 15 off for B special offer (don't apply B special offer)
                 elif b_count > 0:
                     total_price += 10
@@ -44,6 +44,7 @@ def checkout(skus):
                     total_price += 40
             else:
                 total_price += 40
+            print(f"e_count: {e_count}, total_price: {total_price}")
         else:
             return -1
 
@@ -62,6 +63,12 @@ def checkout(skus):
 # assert(checkout("AAAAAA") == 250)
 # assert(checkout("AAAAAAA") == 300)
 # assert(checkout("AAAAAAAAA") == 380)
+
+# assert(checkout("EE") == 80)
+
+print(checkout("EEB"))
+# assert(checkout("EEB") == 95)
+
 
 
 
