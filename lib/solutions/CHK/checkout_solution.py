@@ -21,7 +21,6 @@ def checkout(skus):
                 total_price += 20
             else:
                 total_price += 50
-            print(f"a count: {a_count}, total_price: {total_price}")
         elif c == 'B':
             b_count +=1
             if b_count % 2 == 0:
@@ -60,7 +59,9 @@ def checkout(skus):
 # assert(checkout("AABAAAEE") == 280)
 # assert(checkout("AABAAAEED") == 295)
 
-print(checkout("AAAAAA"))
-#assert(checkout("AAAAAA") == 250)
+# assert(checkout("AAAAAA") == 250)
+# assert(checkout("AAAAAAA") == 300)
+# assert(checkout("AAAAAAAAA") == 380)
+
 
 
