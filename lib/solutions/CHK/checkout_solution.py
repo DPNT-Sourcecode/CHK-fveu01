@@ -1,5 +1,5 @@
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
-    raise NotImplementedError()
-
+    return 0
+    # raise NotImplementedError()
