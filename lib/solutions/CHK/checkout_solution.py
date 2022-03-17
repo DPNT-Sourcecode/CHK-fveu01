@@ -7,11 +7,14 @@ def checkout(skus):
     d_count = 0
     e_count = 0
     total_price = 0
+
+    e_multipriced_offer_to_stack = 0
+
     if skus == "":
         return 0
     if skus == "-":
         return -1
-    for c in skus:
+    for i, c in enumerate(skus):
         if c == 'A':
             a_count +=1
             if a_count % 3 == 0:
@@ -22,6 +25,7 @@ def checkout(skus):
             else:
                 total_price += 50
         elif c == 'B':
+            latest_b_index = i
             b_count +=1
             if b_count % 2 == 0:
                 total_price += 15
@@ -34,6 +38,7 @@ def checkout(skus):
             d_count +=1
             total_price += 15
         elif c == 'E':
+            latest_e_index = i
             e_count += 1
             if e_count % 2 == 0:
                 if b_count > 0 and b_count % 2 == 0:
@@ -41,12 +46,27 @@ def checkout(skus):
                 elif b_count > 0:
                     total_price += 10
                 else:
+                    e_multipriced_offer_to_stack += 1
                     total_price += 40
             else:
                 total_price += 40
-            print(f"e_count: {e_count}, total_price: {total_price}")
+            # print(f"e_count: {e_count}, total_price: {total_price}")
         else:
             return -1
+
+    # print(f"e stacked: {e_multipriced_offer_to_stack}")
+    # print(f"total price before operating on offer stack: {total_price}")
+    # print(f"b_count: {b_count}")
+
+    while(e_multipriced_offer_to_stack > 0 and b_count >= e_multipriced_offer_to_stack):
+        if b_count % 2 == 0:
+            total_price -= 15
+        else:
+            total_price -= 30
+        b_count -= 1
+        e_multipriced_offer_to_stack -= 1
+
+
 
     return total_price
 
@@ -65,10 +85,7 @@ def checkout(skus):
 # assert(checkout("AAAAAAAAA") == 380)
 
 # assert(checkout("EE") == 80)
+# assert(checkout("EEB") == 80)
 
-print(checkout("EEB"))
-# assert(checkout("EEB") == 95)
-
-
-
-
+# # print(f'checkout(EEEB) is {checkout("EEEB")} and should be 120')
+# assert(checkout("EEEB") == 120)
