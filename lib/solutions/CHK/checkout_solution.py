@@ -6,7 +6,9 @@ def checkout(skus):
     c_count = 0
     d_count = 0
     total_price = 0
-    if skus == "" or skus == "-":
+    if skus == "":
+        return 0
+    if skus == "-":
         return -1
     for c in skus:
         if c == 'A':
@@ -37,3 +39,4 @@ def checkout(skus):
 # assert(checkout("-") == -1)
 # assert(checkout("-1") == -1)
 # assert(checkout("AABAB") == 175)
+
