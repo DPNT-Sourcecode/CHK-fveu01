@@ -58,7 +58,24 @@ def checkout(skus):
                 pass
             else:
                 total_price += 10
-            # print(f"f_count: {f_count}, total_price: {total_price}")
+        elif c == 'G':
+            g_count += 1
+            total_price += 20
+        elif c == 'H':
+            h_count += 1
+            if h_count % 10:
+                total_price -= 5
+                h_count = 0
+            elif h_count % 5:
+                total_price += 5
+            else:
+                total_price += 10
+        elif c == 'I':
+            i_count += 1
+            total_price += 35
+        elif c == 'J':
+            i_count += 1
+            total_price += 35
         else:
             return -1
 
@@ -100,6 +117,7 @@ assert(checkout("EEEB") == 120)
 assert(checkout("BEBEEE") == 160)
 assert(checkout("FFF") == 20)
 assert(checkout("FFAAAFAA") == 220)
+
 
 
 
