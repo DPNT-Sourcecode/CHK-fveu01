@@ -6,6 +6,7 @@ def checkout(skus):
     c_count = 0
     d_count = 0
     e_count = 0
+    f_count = 0
     total_price = 0
 
     e_multipriced_offer_to_stack = 0
@@ -25,7 +26,6 @@ def checkout(skus):
             else:
                 total_price += 50
         elif c == 'B':
-            latest_b_index = i
             b_count +=1
             if b_count % 2 == 0:
                 total_price += 15
@@ -38,7 +38,6 @@ def checkout(skus):
             d_count +=1
             total_price += 15
         elif c == 'E':
-            latest_e_index = i
             e_count += 1
             if e_count % 2 == 0:
                 if b_count > 0 and b_count % 2 == 0:
@@ -52,7 +51,14 @@ def checkout(skus):
                     total_price += 40
             else:
                 total_price += 40
-            # print(f"e_count: {e_count}, total_price: {total_price}")
+        elif c == 'F':
+            f_count += 1
+            if f_count % 3 == 0:
+                f_count = 0
+                pass
+            else:
+                total_price += 10
+            print(f"f_count: {f_count}, total_price: {total_price}")
         else:
             return -1
 
@@ -92,4 +98,7 @@ assert(checkout("EEB") == 80)
 assert(checkout("EEEB") == 120)
 # print(f'checkout(BEBEEE) is {checkout("BEBEEE")} and should be 160')
 assert(checkout("BEBEEE") == 160)
+assert(checkout("FFF") == 20)
+assert(checkout("FFAAAFAA") == 220)
+
 
