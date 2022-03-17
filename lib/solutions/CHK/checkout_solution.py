@@ -74,8 +74,50 @@ def checkout(skus):
             i_count += 1
             total_price += 35
         elif c == 'J':
-            i_count += 1
-            total_price += 35
+            j_count += 1
+            total_price += 60
+        elif c == 'K':
+            k_count += 1
+            if k_count % 2:
+                total_price += 70
+                k_count = 0
+            else:
+                total_price += 80
+        elif c == 'L':
+            l_count += 1
+            total_price += 90
+        elif c == 'M':
+            m_count += 1
+            total_price += 15
+        elif c == 'N':
+            n_count += 1
+            if n_count % 3 == 0:
+                if m_count > 0:
+                    m_count -= 1
+                    total_price += 25
+                else:
+                    n_multipriced_offer_to_stack += 1
+                    total_price += 40
+            else:
+                total_price += 40
+        elif c == 'O':
+            o_count += 1
+            total_price += 10
+        elif c == 'P':
+            p_count += 1
+            if p_count % 5 == 0:
+                p_count = 0
+                pass
+            else:
+                total_price += 50
+        elif c == 'Q':
+            q_count += 1
+            if q_count % 3 == 0:
+                q_count = 0
+                total_price += 20
+                pass
+            else:
+                total_price += 30
         else:
             return -1
 
@@ -117,7 +159,3 @@ assert(checkout("EEEB") == 120)
 assert(checkout("BEBEEE") == 160)
 assert(checkout("FFF") == 20)
 assert(checkout("FFAAAFAA") == 220)
-
-
-
-
