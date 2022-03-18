@@ -72,9 +72,11 @@ def checkout(skus):
                 if counts["B"] > 0 and counts["B"] % 2 == 0:
                     total_price += 25  # 15 off for B special offer (don't apply B special offer)
                     counts["B"] -= 1
+                    special_case_applied = "Applied 2E get one B free"
                 elif counts["B"] > 0:
                     total_price += 10
                     counts["B"] -= 1
+                    special_case_applied = "Applied 2E get one B free"
                 else:
                     e_multipriced_offer_to_stack += 1
                     total_price += 40
@@ -95,8 +97,10 @@ def checkout(skus):
             if counts[c] > 1 and counts[c] % 10 == 0:
                 total_price -= 5
                 counts[c] = 0
+                special_case_applied = "Applied 10H for 80"
             elif counts[c] % 5 == 0:
                 total_price += 5
+                special_case_applied = "Applied 5H for 45"
             else:
                 total_price += 10
         elif c == 'I':
@@ -108,10 +112,11 @@ def checkout(skus):
         elif c == 'K':
             counts[c] += 1
             if counts[c] % 2 == 0:
-                total_price += 70
+                total_price += 50
                 counts[c] = 0
+                special_case_applied = "Applied 5H for 45"
             else:
-                total_price += 80
+                total_price += 70
         elif c == 'L':
             counts[c] += 1
             total_price += 90
@@ -268,3 +273,4 @@ assert(checkout("VVV") == 130)
 assert(checkout("VVVV") == 180)
 assert(checkout("NNN") == 120)
 assert(checkout("PPPPQRUVPQRUVPQRUVSU") == 740)
+
