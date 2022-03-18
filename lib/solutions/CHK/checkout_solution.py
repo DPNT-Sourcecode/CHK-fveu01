@@ -168,7 +168,7 @@ def checkout(skus):
             v_count += 1
             if v_count % 2 == 0:
                 total_price += 40
-            if v_count % 3 == 0:
+            elif v_count % 3 == 0:
                 v_count = 0
                 total_price += 40
             else:
@@ -246,5 +246,9 @@ assert(checkout("ABCDEFGHIJKLMNOPQRSTUVWXYZ") == 50 + 30 + 20 + 15 + 40 + 10 + 2
 assert(checkout("UUU") == 120)
 assert(checkout("RRRQ") == 150)
 assert(checkout("RRRRQ") == 200)
+assert(checkout("VV") == 90)
+assert(checkout("VVV") == 130)
+assert(checkout("VVVV") == 180)
+
 
 
