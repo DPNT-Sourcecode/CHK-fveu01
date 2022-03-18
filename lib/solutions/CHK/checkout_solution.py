@@ -152,7 +152,7 @@ def checkout(skus):
         "B": ProductConsumptionContainer("B", 30, [SpecialOffer(2, 15, "2B for 45")]),
         "C": ProductConsumptionContainer("C", 20),
         "D": ProductConsumptionContainer("D", 15),
-        "E": ProductConsumptionContainer("E", 40),
+        "E": ProductConsumptionContainer("E", 40, [SpecialOffer(2, 10, "2E get one B free")]),
         "F": ProductConsumptionContainer("F", 10),
         "G": ProductConsumptionContainer("G", 20),
         "H": ProductConsumptionContainer("H", 10),
@@ -209,3 +209,4 @@ assert(checkout("AAAAABB") == 245)
 # assert(checkout("VVVV") == 180)
 # assert(checkout("NNN") == 120)
 # assert(checkout("PPPPQRUVPQRUVPQRUVSU") == 740)
+
