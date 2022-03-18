@@ -7,9 +7,31 @@ def checkout(skus):
     d_count = 0
     e_count = 0
     f_count = 0
+    g_count = 0
+    h_count = 0
+    i_count = 0
+    j_count = 0
+    k_count = 0
+    l_count = 0
+    m_count = 0
+    n_count = 0
+    o_count = 0
+    p_count = 0
+    q_count = 0
+    r_count = 0
+    s_count = 0
+    t_count = 0
+    u_count = 0
+    v_count = 0
+    w_count = 0
+    x_count = 0
+    y_count = 0
+    z_count = 0
     total_price = 0
 
     e_multipriced_offer_to_stack = 0
+    n_multipriced_offer_to_stack = 0
+    r_multipriced_offer_to_stack = 0
 
     if skus == "":
         return 0
@@ -63,10 +85,10 @@ def checkout(skus):
             total_price += 20
         elif c == 'H':
             h_count += 1
-            if h_count % 10:
+            if h_count > 1 and h_count % 10 == 0:
                 total_price -= 5
                 h_count = 0
-            elif h_count % 5:
+            elif h_count % 5 == 0:
                 total_price += 5
             else:
                 total_price += 10
@@ -78,7 +100,7 @@ def checkout(skus):
             total_price += 60
         elif c == 'K':
             k_count += 1
-            if k_count % 2:
+            if k_count % 2 == 0:
                 total_price += 70
                 k_count = 0
             else:
@@ -124,14 +146,52 @@ def checkout(skus):
                 if q_count > 0:
                     q_count -= 1
                     total_price += 20
-                total_price += 20
+                else:
+                    total_price += 50
+                    r_multipriced_offer_to_stack += 1
+            else:
+                total_price += 50
+        elif c == 'S':
+            s_count += 1
+            total_price += 30
+        elif c == 'T':
+            t_count += 1
+            total_price += 20
+        elif c == 'U':
+            u_count += 1
+            if u_count % 3 == 0:
+                u_count = 0
                 pass
             else:
-                total_price += 30
+                total_price += 40
+        elif c == 'V':
+            v_count += 1
+            if v_count % 2 == 0:
+                total_price += 40
+            if v_count % 3 == 0:
+                v_count = 0
+                total_price += 40
+            else:
+                total_price += 50
+        elif c == 'W':
+            w_count += 1
+            total_price += 20
+        elif c == 'X':
+            x_count += 1
+            total_price += 90
+        elif c == 'Y':
+            y_count += 1
+            total_price += 10
+        elif c == 'Z':
+            z_count += 1
+            total_price += 50
         else:
             return -1
+        # print(f"c was: {c} and total_price is {total_price}")
 
     # print(f"e stacked: {e_multipriced_offer_to_stack}")
+    # print(f"n stacked: {n_multipriced_offer_to_stack}")
+    # print(f"r stacked: {r_multipriced_offer_to_stack}")
     # print(f"total price before operating on offer stack: {total_price}")
     # print(f"b_count: {b_count}")
 
@@ -143,7 +203,19 @@ def checkout(skus):
         b_count -= 1
         e_multipriced_offer_to_stack -= 1
 
+    while(n_multipriced_offer_to_stack > 0 and m_count >= r_multipriced_offer_to_stack):
+        total_price -= 15
+        m_count -= 1
+        n_multipriced_offer_to_stack -= 1
 
+    while(r_multipriced_offer_to_stack > 0 and q_count >= r_multipriced_offer_to_stack):
+        if q_count % 3:
+            total_price -= 20
+            q_count -= 1
+        else:
+            total_price -= 30
+            q_count -= 1
+        r_multipriced_offer_to_stack -= 1
 
     return total_price
 
@@ -165,8 +237,43 @@ assert(checkout("EE") == 80)
 assert(checkout("EEB") == 80)
 
 assert(checkout("EEEB") == 120)
-# print(f'checkout(BEBEEE) is {checkout("BEBEEE")} and should be 160')
 assert(checkout("BEBEEE") == 160)
 assert(checkout("FFF") == 20)
 assert(checkout("FFAAAFAA") == 220)
 
+# print(f'checkout(ALPHABET) is {checkout("ABCDEFGHIJKLMNOPQRSTUVWXYZ")} and should be 965')
+assert(checkout("ABCDEFGHIJKLMNOPQRSTUVWXYZ") == 50 + 30 + 20 + 15 + 40 + 10 + 20 + 10 + 35 + 60 + 80 + 90 + 15 + 40 + 10 + 50 + 30 + 50 + 30 + 20 + 40 + 50 + 20 + 90 + 10 + 50)
+
+# print(f'{checkout("ABCDE")} and should be {50 + 30 + 20 + 15 + 40}')
+#print(f'{checkout("FGHIJ")} and should be {10 + 20 + 10 + 35 + 60}')
+#print(f'{checkout("KLMNO")} and should be {80 + 90 + 15 + 40 + 10}')
+# print(f'{checkout("PQRST")} and should be {50 + 30 + 50 + 30 + 20}')
+#print(f'{checkout("UVWXY")} and should be {40 + 50 + 20 + 90 + 10}')
+#print(f'{checkout("Z")} and should be {50}')
+
+# print(50 +  # A
+#       30 +  # B
+#       20 +  # C
+#       15 +  # D
+#       40 +  # E
+#       10 +  # F
+#       20 +  # G
+#       10 +  # H
+#       35 +  # I
+#       60 +  # J
+#       80 +  # K
+#       90 +  # L
+#       15 +  # M
+#       40 +  # N => issue here
+#       10 +  # O
+#       50 +  # P
+#       30 +  # Q
+#       50 +  # R
+#       30 +  # S
+#       20 +  # T
+#       40 +  # U
+#       50 +  # V
+#       20 +  # W
+#       90 +  # X
+#       10 +  # Y
+#       50)   # Z
