@@ -187,10 +187,13 @@ def checkout(skus):
             total_price += 50
         else:
             return -1
-        print(f"c was: {c} and total_price is {total_price}")
+        print(f"c: {c}, total_price: {total_price}, e_stack: {e_multipriced_offer_to_stack}, n_stack: {n_multipriced_offer_to_stack}, r_stack: {r_multipriced_offer_to_stack}")
+        #print(f"e stacked: {e_multipriced_offer_to_stack}")
+        #print(f"n stacked: {n_multipriced_offer_to_stack}")
+        #print(f"r stacked: {r_multipriced_offer_to_stack}")
 
     # print(f"e stacked: {e_multipriced_offer_to_stack}")
-    print(f"n stacked: {n_multipriced_offer_to_stack}")
+    #print(f"n stacked: {n_multipriced_offer_to_stack}")
     # print(f"r stacked: {r_multipriced_offer_to_stack}")
     # print(f"total price before operating on offer stack: {total_price}")
     # print(f"b_count: {b_count}")
@@ -247,7 +250,8 @@ def checkout(skus):
 #assert(checkout("NNN") == 120)
 
 print(checkout("PPPPQRUVPQRUVPQRUVSU"))
-assert(checkout("PPPPQRUVPQRUVPQRUVSU") == 740)
+# assert(checkout("PPPPQRUVPQRUVPQRUVSU") == 740)
+
 
 
 
