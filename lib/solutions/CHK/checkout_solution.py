@@ -118,6 +118,16 @@ def checkout(skus):
                 pass
             else:
                 total_price += 30
+        elif c == 'R':
+            r_count += 1
+            if r_count % 3 == 0:
+                if q_count > 0:
+                    q_count -= 1
+                    total_price += 20
+                total_price += 20
+                pass
+            else:
+                total_price += 30
         else:
             return -1
 
@@ -159,3 +169,4 @@ assert(checkout("EEEB") == 120)
 assert(checkout("BEBEEE") == 160)
 assert(checkout("FFF") == 20)
 assert(checkout("FFAAAFAA") == 220)
+
