@@ -191,8 +191,8 @@ def checkout(skus):
 
     # print(f"e stacked: {e_multipriced_offer_to_stack}")
     # print(f"n stacked: {n_multipriced_offer_to_stack}")
-    print(f"r stacked: {r_multipriced_offer_to_stack}")
-    print(f"total price before operating on offer stack: {total_price}")
+    # print(f"r stacked: {r_multipriced_offer_to_stack}")
+    # print(f"total price before operating on offer stack: {total_price}")
     # print(f"b_count: {b_count}")
 
     while(e_multipriced_offer_to_stack > 0 and b_count >= e_multipriced_offer_to_stack):
@@ -209,7 +209,7 @@ def checkout(skus):
         n_multipriced_offer_to_stack -= 1
 
     while(r_multipriced_offer_to_stack > 0 and q_count >= r_multipriced_offer_to_stack):
-        if q_count % 3:
+        if q_count % 3 == 0:
             total_price -= 20
             q_count -= 1
         else:
@@ -219,65 +219,32 @@ def checkout(skus):
 
     return total_price
 
-# assert(checkout("") == 0)
-# assert(checkout("-") == -1)
-# assert(checkout("-1") == -1)
-# assert(checkout("AABAB") == 175)
-# assert(checkout("AABABAA") == 245)
-# assert(checkout("AABABAAE") == 285)
-# assert(checkout("AABABAAEE") == 310)
-# assert(checkout("AABAAAEE") == 280)
-# assert(checkout("AABAAAEED") == 295)
+assert(checkout("") == 0)
+assert(checkout("-") == -1)
+assert(checkout("-1") == -1)
+assert(checkout("AABAB") == 175)
+assert(checkout("AABABAA") == 245)
+assert(checkout("AABABAAE") == 285)
+assert(checkout("AABABAAEE") == 310)
+assert(checkout("AABAAAEE") == 280)
+assert(checkout("AABAAAEED") == 295)
 
-# assert(checkout("AAAAAA") == 250)
-# assert(checkout("AAAAAAA") == 300)
-# assert(checkout("AAAAAAAAA") == 380)
+assert(checkout("AAAAAA") == 250)
+assert(checkout("AAAAAAA") == 300)
+assert(checkout("AAAAAAAAA") == 380)
 
-# assert(checkout("EE") == 80)
-# assert(checkout("EEB") == 80)
+assert(checkout("EE") == 80)
+assert(checkout("EEB") == 80)
 
-# assert(checkout("EEEB") == 120)
-# assert(checkout("BEBEEE") == 160)
-# assert(checkout("FFF") == 20)
-# assert(checkout("FFAAAFAA") == 220)
+assert(checkout("EEEB") == 120)
+assert(checkout("BEBEEE") == 160)
+assert(checkout("FFF") == 20)
+assert(checkout("FFAAAFAA") == 220)
 
-# assert(checkout("ABCDEFGHIJKLMNOPQRSTUVWXYZ") == 50 + 30 + 20 + 15 + 40 + 10 + 20 + 10 + 35 + 60 + 80 + 90 + 15 + 40 + 10 + 50 + 30 + 50 + 30 + 20 + 40 + 50 + 20 + 90 + 10 + 50)
+assert(checkout("ABCDEFGHIJKLMNOPQRSTUVWXYZ") == 50 + 30 + 20 + 15 + 40 + 10 + 20 + 10 + 35 + 60 + 80 + 90 + 15 + 40 + 10 + 50 + 30 + 50 + 30 + 20 + 40 + 50 + 20 + 90 + 10 + 50)
 
-# assert(checkout("UUU") == 120)
+assert(checkout("UUU") == 120)
 assert(checkout("RRRQ") == 150)
 assert(checkout("RRRRQ") == 200)
 
-# print(f'{checkout("ABCDE")} and should be {50 + 30 + 20 + 15 + 40}')
-#print(f'{checkout("FGHIJ")} and should be {10 + 20 + 10 + 35 + 60}')
-#print(f'{checkout("KLMNO")} and should be {80 + 90 + 15 + 40 + 10}')
-# print(f'{checkout("PQRST")} and should be {50 + 30 + 50 + 30 + 20}')
-#print(f'{checkout("UVWXY")} and should be {40 + 50 + 20 + 90 + 10}')
-#print(f'{checkout("Z")} and should be {50}')
-
-# print(50 +  # A
-#       30 +  # B
-#       20 +  # C
-#       15 +  # D
-#       40 +  # E
-#       10 +  # F
-#       20 +  # G
-#       10 +  # H
-#       35 +  # I
-#       60 +  # J
-#       80 +  # K
-#       90 +  # L
-#       15 +  # M
-#       40 +  # N => issue here
-#       10 +  # O
-#       50 +  # P
-#       30 +  # Q
-#       50 +  # R
-#       30 +  # S
-#       20 +  # T
-#       40 +  # U
-#       50 +  # V
-#       20 +  # W
-#       90 +  # X
-#       10 +  # Y
-#       50)   # Z
 
