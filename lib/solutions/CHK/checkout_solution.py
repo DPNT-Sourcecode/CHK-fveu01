@@ -135,7 +135,6 @@ def checkout(skus):
         elif c == 'Q':
             q_count += 1
             if q_count % 3 == 0:
-                q_count = 0
                 total_price += 20
                 pass
             else:
@@ -187,7 +186,7 @@ def checkout(skus):
             total_price += 50
         else:
             return -1
-        print(f"c: {c}, total_price: {total_price}, e_stack: {e_multipriced_offer_to_stack}, n_stack: {n_multipriced_offer_to_stack}, r_stack: {r_multipriced_offer_to_stack}")
+        print(f"c: {c}, total_price: {total_price}, e_stack: {e_multipriced_offer_to_stack}, n_stack: {n_multipriced_offer_to_stack}, r_stack: {r_multipriced_offer_to_stack}, v_count: {v_count}")
         #print(f"e stacked: {e_multipriced_offer_to_stack}")
         #print(f"n stacked: {n_multipriced_offer_to_stack}")
         #print(f"r stacked: {r_multipriced_offer_to_stack}")
@@ -251,6 +250,7 @@ def checkout(skus):
 
 print(checkout("PPPPQRUVPQRUVPQRUVSU"))
 # assert(checkout("PPPPQRUVPQRUVPQRUVSU") == 740)
+
 
 
 
